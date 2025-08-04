@@ -73,7 +73,7 @@
 
 <script setup>
 import { onMounted, ref, watch } from 'vue'
-import { buttonLayouts, getJsonFilePath, getLayoutLabel } from '~/public/button-layouts.js'
+import { buttonLayouts, getJsonFilePath, getLayoutLabel } from '~/components/button-layouts.js'
 
 const props = defineProps({ 
   buttons: Array,
