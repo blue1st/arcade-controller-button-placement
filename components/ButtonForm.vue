@@ -13,8 +13,8 @@
                   <option value="pws-type-b">PWS Type B</option>
                   <option value="pws-type-c">PWS Type C</option>
                   <option value="pws-type-d">PWS Type D</option>
-                  <option value="pws-type-e">PWS Type E</option>
                   <option value="pws-type-f">PWS Type F</option>
+                  <option value="hori-nolva">HORI Nolva</option>
                 </select>
               </div>
             </div>
