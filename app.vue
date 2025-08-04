@@ -25,6 +25,7 @@
     <footer class="footer">
       <div class="content has-text-centered">
         <p>&copy; 2025 Arcade Controller Button Placement</p>
+        <p><a href="https://github.com/blue1st/arcade-controller-button-placement" target="_blank">GitHubリポジトリ</a></p>
       </div>
     </footer>
   </div>
