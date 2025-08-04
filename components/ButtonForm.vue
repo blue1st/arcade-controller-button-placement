@@ -76,8 +76,7 @@ import { onMounted, ref, watch } from 'vue'
 import { buttonLayouts, getJsonFilePath, getLayoutLabel } from '~/components/button-layouts.js'
 
 const props = defineProps({ 
-  buttons: Array,
-  resetToSelectLayout: Function
+  buttons: Array
 })
 const emit = defineEmits(['update'])
 
