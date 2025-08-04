@@ -32,7 +32,7 @@ const draw = () => {
   // Draw buttons
   props.buttons.forEach(button => {
     // Determine radius based on diameter
-    const radius = button.diameter ? button.diameter / 2 : 20
+    const radius = button.diameter
     
     // Draw button circle
     ctx.beginPath()
@@ -43,12 +43,14 @@ const draw = () => {
     ctx.stroke()
 
     // Draw label
+    ctx.fillStyle = '#fff'
     ctx.strokeStyle = '#000'
-    ctx.lineWidth = 2
+    ctx.lineWidth = 3
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
-    ctx.font = '14px Arial'
+    ctx.font = '20px Arial'
     ctx.strokeText(button.label, button.x, button.y)
+    ctx.fillText(button.label, button.x, button.y)
   })
 }
 
