@@ -43,11 +43,12 @@ const draw = () => {
     ctx.stroke()
 
     // Draw label
-    ctx.fillStyle = '#fff'
+    ctx.strokeStyle = '#000'
+    ctx.lineWidth = 2
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
     ctx.font = '14px Arial'
-    ctx.fillText(button.label, button.x, button.y)
+    ctx.strokeText(button.label, button.x, button.y)
   })
 }
 
