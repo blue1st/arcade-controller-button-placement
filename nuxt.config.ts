@@ -1,5 +1,5 @@
 export default defineNuxtConfig({
-
+  compatibilityDate: '2025-08-05',
   css: ["bulma/css/bulma.min.css"],
   app: {
     head: {
