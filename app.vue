@@ -12,11 +12,11 @@
       <div class="container">
         <!-- メイン画面 -->
         <div class="columns">
-          <div class="column is-4">
-            <ButtonForm @update="updateButtons" />
-          </div>
           <div class="column is-8">
             <LayoutCanvas :buttons="buttons" />
+          </div>
+          <div class="column is-4">
+            <ButtonForm @update="updateButtons" />
           </div>
         </div>
       </div>

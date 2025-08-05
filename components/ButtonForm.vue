@@ -114,7 +114,6 @@ const toggleAccordion = (id) => {
 
 const loadSelectedLayout = async () => {
   try {
-    console.log(localButtons.value)
     // 確認ダイアログを表示
     if (localButtons.value.length > 0 && !confirm('レイアウトを変更します。よろしいですか？')) {
       return;
