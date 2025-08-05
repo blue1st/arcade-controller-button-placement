@@ -9,12 +9,7 @@
             <div class="control">
               <div class="select">
                 <select v-model="selectedLayout" @change="loadSelectedLayout">
-                  <option value="default">Default</option>
-                  <option value="pws-type-b">PWS Type B</option>
-                  <option value="pws-type-c">PWS Type C</option>
-                  <option value="pws-type-d">PWS Type D</option>
-                  <option value="pws-type-f">PWS Type F</option>
-                  <option value="hori-nolva">HORI Nolva</option>
+                  <option v-for="buttonLayout in buttonLayouts" :value="buttonLayout.name">{{ buttonLayout.label }}</option>
                 </select>
               </div>
             </div>
