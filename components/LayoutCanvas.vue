@@ -53,7 +53,7 @@ const draw = () => {
     // Draw button circle
     ctx.beginPath()
     ctx.arc(button.x, button.y, radius, 0, Math.PI * 2)
-    ctx.fillStyle = '#3498db'
+    ctx.fillStyle = button?.label.length > 0 ? '#3498db' : '#ddd'
     ctx.fill()
     ctx.strokeStyle = '#2980b9'
     ctx.stroke()
