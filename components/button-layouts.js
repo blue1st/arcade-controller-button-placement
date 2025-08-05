@@ -7,7 +7,8 @@ export const buttonLayouts = [
   { name: 'pws-type-f', jsonFile: './pws-type-f.json', label: 'PWS Type F' },
   { name: 'hori-nolva', jsonFile: './hori-nolva.json', label: 'HORI Nolva' },
   { name: 'brook-starburst', jsonFile: './brook-starburst.json', label: 'Brook Starburst' },
-  { name: 'rushbox', jsonFile: './rushbox-layout.json', label: 'Rushbox' }
+  { name: 'rushbox', jsonFile: './rushbox-layout.json', label: 'Rushbox' },
+  { name: 'haute46-16series', jsonFile: './haute46-16series.json', label: 'Haute46 16Series' }
 ]
 
 // レイアウトの名前からJSONファイルパスを取得する関数
