@@ -1,0 +1,12 @@
+[
+  { "id": 5, "x": 340, "y": 125, "label": "LP", "diameter": 24 },
+  { "id": 6, "x": 390, "y": 100, "label": "MP", "diameter": 24 },
+  { "id": 7, "x": 445, "y": 100, "label": "HP", "diameter": 24 },
+  { "id": 8, "x": 500, "y": 100, "label": "DI", "diameter": 24 },
+  { "id": 9, "x": 340, "y": 180, "label": "LK", "diameter": 24 },
+  { "id": 10, "x": 390, "y": 155, "label": "MK", "diameter": 24 },
+  { "id": 11, "x": 445, "y": 155, "label": "HK", "diameter": 24 },
+  { "id": 12, "x": 500, "y": 155, "label": "DP", "diameter": 24 },
+  { "id": 13, "x": 370, "y": 230, "label": "R3", "diameter": 24 },
+  { "id": 14, "x": 320, "y": 250, "label": "L3", "diameter": 24 }
+]

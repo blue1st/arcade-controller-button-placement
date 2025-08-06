@@ -1,6 +1,7 @@
 // ボタンレイアウトとJSONファイルの対応関係を定義
 export const buttonLayouts = [
   { name: 'default', jsonFile: './default-buttons.json', label: 'Default' },
+  { name: 'basic-lever', jsonFile: './basic-lever.json', label: 'Basic Lever' },
   { name: 'pws-type-b', jsonFile: './pws-type-b.json', label: 'PWS Type B' },
   { name: 'pws-type-c', jsonFile: './pws-type-c.json', label: 'PWS Type C' },
   { name: 'pws-type-d', jsonFile: './pws-type-d.json', label: 'PWS Type D' },
@@ -8,7 +9,9 @@ export const buttonLayouts = [
   { name: 'hori-nolva', jsonFile: './hori-nolva.json', label: 'HORI Nolva' },
   { name: 'brook-starburst', jsonFile: './brook-starburst.json', label: 'Brook Starburst' },
   { name: 'rushbox', jsonFile: './rushbox-layout.json', label: 'Rushbox' },
-  { name: 'haute46-16series', jsonFile: './haute46-16series.json', label: 'Haute46 16Series' }
+  { name: 'haute46-16series', jsonFile: './haute46-16series.json', label: 'Haute46 16Series' },
+  { name: 'pws-fs30', jsonFile: './pws-fs30.json', label: 'PWS FS30' },
+  { name: 'pws-fs24', jsonFile: './pws-fs24.json', label: 'PWS FS24' }
 ]
 
 // レイアウトの名前からJSONファイルパスを取得する関数
