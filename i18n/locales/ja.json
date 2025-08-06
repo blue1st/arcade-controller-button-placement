@@ -1,0 +1,30 @@
+{
+  "header": {
+    "main": "アーケードコントローラーボタン配置"
+  },
+  "footer": {
+    "copyright": "© 2025 アーケードコントローラーボタン配置",
+    "githubLink": "GitHub"
+  },
+  "buttonForm": {
+    "title": "ボタン設定",
+    "addButton": "ボタンを追加",
+    "clearAll": "すべてクリア",
+    "save": "保存",
+    "cancel": "キャンセル",
+    "selectLayout": "レイアウト選択",
+    "resetButton": "レイアウトを再設定する",
+    "removeButtonConfirm": "このボタンを削除してもよろしいですか？"
+  },
+  "buttonConfig": {
+    "label": "ラベル",
+    "x": "X座標",
+    "y": "Y座標",
+    "diameter": "直径",
+    "removeButton": "ボタンを削除"
+  },
+  "layoutCanvas": {
+    "title": "レイアウトプレビュー",
+    "download": "PNGとしてダウンロード"
+  }
+}

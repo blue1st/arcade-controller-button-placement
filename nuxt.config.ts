@@ -10,5 +10,22 @@ export default defineNuxtConfig({
       ],
     },
     cdnURL: '/arcade-controller-button-placement/'
-  }
+  },
+  i18n: {
+    locales: [
+      { code: 'en', name: 'English', iso: 'en-US', file: 'en.json' },
+      { code: 'ja', name: '日本語', iso: 'ja-JP', file: 'ja.json' }
+    ],
+    defaultLocale: 'ja',
+    strategy: 'prefix_except_default',
+    langDir: 'locales',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_redirected',
+      fallbackLocale: 'ja'
+    }
+  },
+  modules: [
+    '@nuxtjs/i18n'
+  ]
 })

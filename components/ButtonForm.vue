@@ -2,10 +2,10 @@
   <div class="card">
     <div class="card-content">
       <div class="content">
-        <h4>Button Configuration</h4>
+        <h4>{{ $t('buttonForm.title') }}</h4>
         <form @submit.prevent>
           <div class="field">
-            <label class="label">Select Button Layout</label>
+            <label class="label">{{ $t('buttonForm.selectLayout') }}</label>
             <div class="control">
               <div class="select">
                 <select v-model="selectedLayout" @change="loadSelectedLayout">
@@ -14,7 +14,7 @@
               </div>
             </div>
           </div>
-          <button class="button is-secondary ms-2" @click="loadSelectedLayout">Reset to Select Layout</button>
+          <button class="button is-secondary ms-2" @click="loadSelectedLayout">{{ $t('buttonForm.resetButton') }}</button>
           <div v-for="(button, index) in localButtons" :key="button.id" class="mb-3 border rounded">
             <div class="p-3 bg-light d-flex justify-content-between align-items-center accordion-header" @click="toggleAccordion(button.id)">
               <span>{{ accordionOpen[button.id] ? '▲' : '▼' }}</span>
@@ -22,23 +22,23 @@
             </div>
             <div v-show="accordionOpen[button.id]" class="p-3">
               <div class="field">
-                <label class="label">Label</label>
+                <label class="label">{{ $t('buttonConfig.label') }}</label>
                 <div class="control">
                   <input class="input" type="text" v-model="button.label" @input="emitUpdate">
                 </div>
               </div>
               <div class="columns">
                 <div class="column is-6">
-                  <div class="field">
-                    <label class="label">X</label>
-                    <div class="control">
-                      <input class="input" type="number" v-model.number="button.x" @input="emitUpdate">
-                    </div>
+                <div class="field">
+                  <label class="label">{{ $t('buttonConfig.x') }}</label>
+                  <div class="control">
+                    <input class="input" type="number" v-model.number="button.x" @input="emitUpdate">
                   </div>
+                </div>
                 </div>
                 <div class="column is-6">
                   <div class="field">
-                    <label class="label">Y</label>
+                    <label class="label">{{ $t('buttonConfig.y') }}</label>
                     <div class="control">
                       <input class="input" type="number" v-model.number="button.y" @input="emitUpdate">
                     </div>
@@ -46,7 +46,7 @@
                 </div>
               </div>
               <div class="field">
-                <label class="label">Diameter (φ)</label>
+                <label class="label">{{ $t('buttonConfig.diameter') }}</label>
                 <div class="control">
                   <div class="select">
                     <select v-model.number="button.diameter" @input="emitUpdate">
@@ -56,10 +56,10 @@
                   </div>
                 </div>
               </div>
-              <button class="button is-danger is-small mt-2" @click="removeButton(button.id)">Remove</button>
+              <button class="button is-danger is-small mt-2" @click="removeButton(button.id)">{{ $t('buttonConfig.removeButton') }}</button>
             </div>
           </div>
-          <button class="button is-primary" @click="addButton">Add Button</button>
+          <button class="button is-primary" @click="addButton">{{ $t('buttonForm.addButton') }}</button>
         </form>
       </div>
     </div>
@@ -95,7 +95,7 @@ const addButton = () => {
 
 const removeButton = (id) => {
   // 確認ダイアログを表示
-  if (!confirm('ボタンを削除します。よろしいですか？')) {
+  if (!confirm($t('buttonForm.removeButtonConfirm'))) {
     return;
   }
   

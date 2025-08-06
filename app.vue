@@ -3,7 +3,12 @@
     <header class="hero is-primary">
       <div class="hero-body">
         <div class="container">
-          <h1 class="title">Arcade Controller Button Placement</h1>
+          <h1 class="title">{{ $t('header.main') }}</h1>
+          <div class="buttons is-right">
+            <button class="button is-small" @click="changeLang">
+              {{ locale === 'ja' ? 'EN' : 'JP' }}
+            </button>
+          </div>
         </div>
       </div>
     </header>
@@ -24,8 +29,8 @@
 
     <footer class="footer">
       <div class="content has-text-centered">
-        <p>&copy; 2025 Arcade Controller Button Placement</p>
-        <p><a href="https://github.com/blue1st/arcade-controller-button-placement" target="_blank">GitHubリポジトリ</a></p>
+        <p>{{ $t('footer.copyright') }}</p>
+        <p><a href="https://github.com/blue1st/arcade-controller-button-placement" target="_blank">{{ $t('footer.githubLink') }}</a></p>
       </div>
     </footer>
   </div>
@@ -39,6 +44,7 @@ import { buttonLayouts, getJsonFilePath } from '~/components/button-layouts.js'
 
 const selectedType = ref(null)
 const buttons = ref([])
+const { setLocale, locale } = useI18n()
 
 // 機種を選択
 const selectType = (type) => {
@@ -70,6 +76,15 @@ const loadButtons = async (type) => {
 
 const updateButtons = (newButtons) => {
   buttons.value = newButtons
+}
+
+const changeLang = () => {
+  if (locale.value === "en") {
+    setLocale("ja")
+  }
+  else {
+    setLocale("en")
+  }
 }
 
 

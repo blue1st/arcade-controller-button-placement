@@ -2,9 +2,9 @@
   <div class="card">
     <div class="card-content">
       <div class="content">
-        <h4>Layout Preview</h4>
+        <h4>{{ $t('layoutCanvas.title') }}</h4>
         <canvas ref="canvas" width="600" height="400"" class="border scaled-canvas"></canvas>
-        <button class="button is-success mt-3" @click="downloadCanvas">Download as PNG</button>
+        <button class="button is-success mt-3" @click="downloadCanvas">{{ $t('layoutCanvas.download') }}</button>
       </div>
     </div>
   </div>

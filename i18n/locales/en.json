@@ -1,0 +1,30 @@
+{
+  "header": {
+    "main": "Arcade Controller Button Placement"
+  },
+  "footer": {
+    "copyright": "© 2025 Arcade Controller Button Placement",
+    "githubLink": "GitHub"
+  },
+  "buttonForm": {
+    "title": "Button Configuration",
+    "addButton": "Add Button",
+    "clearAll": "Clear All",
+    "save": "Save",
+    "cancel": "Cancel",
+    "selectLayout": "Select Layout",
+    "resetButton": "Reset Button",
+    "removeButtonConfirm": "Are you sure you want to remove this button?"
+  },
+  "buttonConfig": {
+    "label": "Label",
+    "x": "X Position",
+    "y": "Y Position",
+    "diameter": "Diameter",
+    "removeButton": "Remove Button"
+  },
+  "layoutCanvas": {
+    "title": "Layout Preview",
+    "download": "Download as PNG"
+  }
+}
