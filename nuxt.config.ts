@@ -9,7 +9,8 @@ export default defineNuxtConfig({
         { name: 'viewport', content: 'width=device-width, initial-scale=1' }
       ],
     },
-    cdnURL: '/arcade-controller-button-placement/'
+    cdnURL: '/arcade-controller-button-placement/',
+    baseURL: '/arcade-controller-button-placement/'
   },
   i18n: {
     locales: [
