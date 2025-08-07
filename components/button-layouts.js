@@ -7,11 +7,13 @@ export const buttonLayouts = [
   { name: 'pws-type-d', jsonFile: './pws-type-d.json', label: 'PWS Type D' },
   { name: 'pws-type-f', jsonFile: './pws-type-f.json', label: 'PWS Type F' },
   { name: 'hori-nolva', jsonFile: './hori-nolva.json', label: 'HORI Nolva' },
-  { name: 'brook-starburst', jsonFile: './brook-starburst.json', label: 'Brook Starburst' },
   { name: 'rushbox', jsonFile: './rushbox-layout.json', label: 'Rushbox' },
   { name: 'haute46-16series', jsonFile: './haute46-16series.json', label: 'Haute46 16Series' },
   { name: 'pws-fs30', jsonFile: './pws-fs30.json', label: 'PWS FS30' },
-  { name: 'pws-fs24', jsonFile: './pws-fs24.json', label: 'PWS FS24' }
+  { name: 'pws-fs24', jsonFile: './pws-fs24.json', label: 'PWS FS24' },
+  { name: 'brook-starburst', jsonFile: './brook-starburst.json', label: 'Brook Starburst' },
+  { name: 'madcatz-neko', jsonFile: './madcatz-neko.json', label: 'MadCatz N.E.K.O' },
+  { name: 'victrix-pro-ko', jsonFile: './victrix-pro-ko.json', label: 'Victrix Pro KO' }
 ]
 
 // レイアウトの名前からJSONファイルパスを取得する関数

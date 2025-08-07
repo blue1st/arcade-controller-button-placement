@@ -1,0 +1,20 @@
+[
+  { "id": 1, "x": 160, "y": 100, "label": "←", "diameter": 24 },
+  { "id": 2, "x": 220, "y": 100, "label": "↓", "diameter": 24 },
+  { "id": 3, "x": 270, "y": 125, "label": "→", "diameter": 24 },
+  { "id": 4, "x": 300, "y": 290, "label": "↑", "diameter": 30 },
+  { "id": 5, "x": 340, "y": 125, "label": "LP", "diameter": 24 },
+  { "id": 6, "x": 390, "y": 100, "label": "MP", "diameter": 24 },
+  { "id": 7, "x": 445, "y": 100, "label": "HP", "diameter": 24 },
+  { "id": 8, "x": 500, "y": 100, "label": "DI", "diameter": 24 },
+  { "id": 9, "x": 340, "y": 185, "label": "LK", "diameter": 24 },
+  { "id": 10, "x": 390, "y": 160, "label": "MK", "diameter": 24 },
+  { "id": 11, "x": 445, "y": 160, "label": "HK", "diameter": 24 },
+  { "id": 12, "x": 500, "y": 160, "label": "DP", "diameter": 24 },
+  { "id": 13, "x": 100, "y": 120, "label": "M1", "diameter": 24 },
+  { "id": 14, "x": 240, "y": 260, "label": "M2", "diameter": 24 },
+  { "id": 15, "x": 360, "y": 240, "label": "RS", "diameter": 24 },
+  { "id": 16, "x": 340, "y": 70, "label": "LS", "diameter": 24 },
+  { "id": 17, "x": 390, "y": 45, "label": "M3", "diameter": 24 },
+  { "id": 18, "x": 555, "y": 100, "label": "M4", "diameter": 24 }
+]
