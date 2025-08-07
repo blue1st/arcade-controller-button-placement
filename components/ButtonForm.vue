@@ -123,14 +123,29 @@ const loadSelectedLayout = async () => {
     
     const response = await fetch(layoutConfig.jsonFile)
     const defaultButtons = await response.json()
-    localButtons.value = JSON.parse(JSON.stringify(defaultButtons));
+    localButtons.value = defaultButtons
     emitUpdate();
   } catch (error) {
     console.error('Failed to load selected layout:', error)
   }
 }
 
-onMounted(() => loadSelectedLayout())
+// URLパラメータがある場合は初期ロードをスキップ
+onMounted(() => {
+  const urlParams = new URLSearchParams(window.location.search)
+  const buttonsParam = urlParams.get('buttons')
+  
+  if (buttonsParam) {
+    try {
+      localButtons.value = JSON.parse(buttonsParam)
+    } catch (error) {
+      console.error('URLパラメータの解析に失敗しました:', error)
+      loadSelectedLayout()
+    }
+  } else {
+    loadSelectedLayout()
+  }
+})
 </script>
 
 <style lang="sass" scoped>
