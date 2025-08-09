@@ -76,7 +76,7 @@ const props = defineProps<{
 }>()
 const emit = defineEmits(['update'])
 
-const localButtons = ref<Button[]>(JSON.parse(JSON.stringify(props.buttons || [])))
+const localButtons = ref<Button[]>(props.buttons || [])
 const accordionOpen = ref<Record<string, boolean>>({})
 const selectedLayout = ref('default')
 
