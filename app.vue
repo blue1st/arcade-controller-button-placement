@@ -2,11 +2,16 @@
   <div class="is-flex is-flex-direction-column is-min-vh-100">
     <header class="hero is-primary">
       <div class="hero-body">
-        <div class="container">
-          <h1 class="title">{{ $t('header.main') }}</h1>
-          <div class="buttons is-right">
-            <button class="button is-small" @click="changeLang">
-              {{ locale === 'ja' ? 'EN' : 'JP' }}
+        <div class="container level">
+          <div class="level-left">
+            <h1 class="title level-item">{{ $t('header.main') }}</h1>
+          </div>
+          <div class="buttons is-right level-item">
+            <button class="button is-medium" @click="changeLang">
+              <span class="icon is-medium">
+                <i class="fas fa-language"></i>
+              </span>
+              <span>{{ locale === 'ja' ? 'EN' : 'JP' }}</span>
             </button>
           </div>
         </div>
@@ -30,7 +35,7 @@
     <footer class="footer">
       <div class="content has-text-centered">
         <p>{{ $t('footer.copyright') }}</p>
-        <p><a href="https://github.com/blue1st/arcade-controller-button-placement" target="_blank">{{ $t('footer.githubLink') }}</a></p>
+        <p><a href="https://github.com/blue1st/arcade-controller-button-placement" target="_blank"><span class="icon is-small"><i class="fab fa-github"></i></span> {{ $t('footer.githubLink') }}</a></p>
       </div>
     </footer>
   </div>
@@ -90,8 +95,7 @@ const loadButtons = async (type: ControllerType) => {
       return
     }
     
-    let response
-    response = await fetch(jsonFilePath)
+    const response = await fetch(jsonFilePath)
     
     if (response && response.ok) {
       const data = await response.json()

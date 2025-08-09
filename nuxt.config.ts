@@ -19,6 +19,12 @@ export default defineNuxtConfig({
         { name: 'twitter:description', content: 'アケコンボタン配置図作成ツール' },
         { name: 'twitter:image', content: 'https://blue1st.github.io/arcade-controller-button-placement/preview.png' }
       ],
+      link: [
+        {
+          rel: 'stylesheet',
+          href: 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css'
+        }
+      ]
     },
     cdnURL: '/arcade-controller-button-placement/',
     baseURL: '/arcade-controller-button-placement/'
