@@ -5,6 +5,7 @@
         <h4>{{ $t('layoutCanvas.title') }}</h4>
         <canvas ref="canvas" width="600" height="400"" class="border scaled-canvas"></canvas>
         <button class="button is-success mt-3" @click="downloadCanvas">{{ $t('layoutCanvas.download') }}</button>
+<button class="button is-info mt-3 ml-2" @click="shareURL">{{ $t('layoutCanvas.share') }}</button>
       </div>
     </div>
   </div>
@@ -12,6 +13,7 @@
 
 <script setup>
 import { ref, onMounted, watch } from 'vue'
+import { compressToBase64, decompressFromBase64 } from 'lz-string'
 
 const props = defineProps({ buttons: Array })
 const canvas = ref(null)
@@ -84,6 +86,30 @@ const downloadCanvas = () => {
   link.download = 'button-layout.png';
   link.href = canvas.value.toDataURL('image/png');
   link.click();
+}
+
+const shareURL = () => {
+  // URLパラメータを取得
+  const urlParams = new URLSearchParams(window.location.search);
+  
+  // ボタンデータをJSON形式に変換
+  const buttonsData = JSON.stringify(props.buttons);
+  
+  // LZStringで圧縮
+  const compressed = compressToBase64(buttonsData);
+  
+  // 圧縮されたデータをURLパラメータに追加
+  urlParams.set('data', compressed);
+  
+  // 元のURLにパラメータを追加して共有用URLを作成
+  const shareUrl = `${window.location.origin}${window.location.pathname}?${urlParams.toString()}`;
+  
+  // URLをコピー
+  navigator.clipboard.writeText(shareUrl).then(() => {
+    alert('共有用URLがクリップボードにコピーされました！');
+  }).catch(err => {
+    console.error('URLのコピーに失敗しました: ', err);
+  });
 }
 
 </script>

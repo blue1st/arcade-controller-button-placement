@@ -13,6 +13,7 @@
     "sass-embedded": "^1.89.2"
   },
   "dependencies": {
-    "@nuxtjs/i18n": "^10.0.3"
+    "@nuxtjs/i18n": "^10.0.3",
+    "lz-string": "^1.5.0"
   }
 }

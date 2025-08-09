@@ -87,39 +87,6 @@ const changeLang = () => {
   }
 }
 
-// URLパラメータからボタン設定を読み込む
-const loadFromUrlParams = () => {
-  const urlParams = new URLSearchParams(window.location.search)
-  const buttonsParam = urlParams.get('buttons')
-  
-  if (buttonsParam) {
-    try {
-      const parsedButtons = JSON.parse(decodeURIComponent(buttonsParam))
-      if (Array.isArray(parsedButtons)) {
-        buttons.value = parsedButtons
-      }
-    } catch (error) {
-      console.error('URLパラメータの解析に失敗しました:', error)
-    }
-  }
-}
-
-// ボタン設定をURLパラメータに変換する
-const convertToUrlParams = () => {
-  const buttonsParam = encodeURIComponent(JSON.stringify(buttons.value))
-  const newUrl = `${window.location.pathname}?buttons=${buttonsParam}`
-  window.history.replaceState({}, '', newUrl)
-}
-
-onMounted(() => {
-  loadFromUrlParams()
-})
-
-// ボタン設定が更新されるたびにURLを更新
-watch(buttons, () => {
-  convertToUrlParams()
-}, { deep: true })
-
 </script>
 
 <style>

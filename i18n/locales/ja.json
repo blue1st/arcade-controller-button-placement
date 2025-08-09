@@ -25,6 +25,7 @@
   },
   "layoutCanvas": {
     "title": "レイアウトプレビュー",
-    "download": "PNGとしてダウンロード"
+    "download": "PNGとしてダウンロード",
+    "share": "URLを共有"
   }
 }

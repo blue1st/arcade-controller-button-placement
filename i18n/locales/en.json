@@ -25,6 +25,7 @@
   },
   "layoutCanvas": {
     "title": "Layout Preview",
-    "download": "Download as PNG"
+    "download": "Download as PNG",
+    "share": "Share URL"
   }
 }

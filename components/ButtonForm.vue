@@ -69,6 +69,7 @@
 <script setup>
 import { onMounted, ref, watch } from 'vue'
 import { buttonLayouts, getJsonFilePath, getLayoutLabel } from '~/components/button-layouts.js'
+import { compressToBase64, decompressFromBase64 } from 'lz-string'
 
 const props = defineProps({ 
   buttons: Array
@@ -124,25 +125,39 @@ const loadSelectedLayout = async () => {
     const response = await fetch(layoutConfig.jsonFile)
     const defaultButtons = await response.json()
     localButtons.value = defaultButtons
-    emitUpdate();
+    emitUpdate()
   } catch (error) {
     console.error('Failed to load selected layout:', error)
   }
 }
-
-// URLパラメータがある場合は初期ロードをスキップ
-onMounted(() => {
+// URLパラメータからボタン設定を読み込む
+const loadFromUrlParams = () => {
   const urlParams = new URLSearchParams(window.location.search)
-  const buttonsParam = urlParams.get('buttons')
-  
-  if (buttonsParam) {
+  const dataParam = urlParams.get('data')
+
+  if (dataParam) {
     try {
-      localButtons.value = JSON.parse(buttonsParam)
+      // LZStringでデータをデコード
+      const decompressed = decompressFromBase64(dataParam)
+
+      if (decompressed) {
+        const parsedButtons = JSON.parse(decompressed)
+        console.log(parsedButtons)
+        if (Array.isArray(parsedButtons)) {
+          localButtons.value = parsedButtons
+          emitUpdate()
+        }
+      }
     } catch (error) {
       console.error('URLパラメータの解析に失敗しました:', error)
-      loadSelectedLayout()
     }
-  } else {
+  }
+}
+// URLパラメータがある場合は初期ロードをスキップ
+onMounted(() => {
+  loadFromUrlParams()
+  
+  if (localButtons.value.length === 0) {
     loadSelectedLayout()
   }
 })
