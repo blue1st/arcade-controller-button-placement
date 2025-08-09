@@ -68,7 +68,7 @@
 
 <script setup>
 import { onMounted, ref, watch } from 'vue'
-import { buttonLayouts, getJsonFilePath, getLayoutLabel } from '~/components/button-layouts.js'
+import { buttonLayouts, getJsonFilePath, getLayoutLabel } from '~/components/button-layouts.ts'
 import { compressToBase64, decompressFromBase64 } from 'lz-string'
 
 const props = defineProps({ 

@@ -40,7 +40,7 @@
 import { ref, onMounted, nextTick } from 'vue'
 import ButtonForm from '~/components/ButtonForm.vue'
 import LayoutCanvas from '~/components/LayoutCanvas.vue'
-import { buttonLayouts, getJsonFilePath } from '~/components/button-layouts.js'
+import { buttonLayouts, getJsonFilePath } from '~/components/button-layouts.ts'
 
 const selectedType = ref(null)
 const buttons = ref([])
