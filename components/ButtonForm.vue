@@ -69,7 +69,6 @@
 <script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
 import { buttonLayouts, getJsonFilePath, getLayoutLabel } from '~/components/button-layouts.ts'
-import { compressToBase64, decompressFromBase64 } from 'lz-string'
 import type { Button, LayoutConfig } from '~/types/button-types.ts'
 
 const props = defineProps<{ 
@@ -82,7 +81,7 @@ const accordionOpen = ref<Record<string, boolean>>({})
 const selectedLayout = ref('default')
 
 watch(() => props.buttons, (newVal) => {
-  localButtons.value = JSON.parse(JSON.stringify(newVal || []))
+  localButtons.value = newVal
 }, { deep: true })
 
 const emitUpdate = () => {
@@ -132,38 +131,6 @@ const loadSelectedLayout = async () => {
   }
 }
 
-// URLパラメータからボタン設定を読み込む
-const loadFromUrlParams = () => {
-  const urlParams = new URLSearchParams(window.location.search)
-  const dataParam = urlParams.get('data')
-
-  if (dataParam) {
-    try {
-      // LZStringでデータをデコード
-      const decompressed = decompressFromBase64(dataParam)
-
-      if (decompressed) {
-        const parsedButtons = JSON.parse(decompressed)
-        console.log(parsedButtons)
-        if (Array.isArray(parsedButtons)) {
-          localButtons.value = parsedButtons
-          emitUpdate()
-        }
-      }
-    } catch (error: any) {
-      console.error('URLパラメータの解析に失敗しました:', error)
-    }
-  }
-}
-
-// URLパラメータがある場合は初期ロードをスキップ
-onMounted(() => {
-  loadFromUrlParams()
-  
-  if (localButtons.value.length === 0) {
-    loadSelectedLayout()
-  }
-})
 </script>
 
 <style lang="sass" scoped>
