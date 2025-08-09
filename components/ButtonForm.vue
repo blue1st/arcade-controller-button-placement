@@ -14,7 +14,12 @@
               </div>
             </div>
           </div>
-          <button class="button is-secondary ms-2" @click="loadSelectedLayout">{{ $t('buttonForm.resetButton') }}</button>
+          <button class="button is-secondary ms-2" @click="loadSelectedLayout">
+            <span class="icon is-small">
+              <i class="fas fa-redo"></i>
+            </span>
+            <span>{{ $t('buttonForm.resetButton') }}</span>
+          </button>
           <div v-for="(button, index) in localButtons" :key="button.id" class="mb-3 border rounded">
             <div class="p-3 bg-light d-flex justify-content-between align-items-center accordion-header" @click="toggleAccordion(button.id)">
               <span>{{ accordionOpen[button.id] ? '▲' : '▼' }}</span>
@@ -56,10 +61,20 @@
                   </div>
                 </div>
               </div>
-              <button class="button is-danger is-small mt-2" @click="removeButton(button.id)">{{ $t('buttonConfig.removeButton') }}</button>
+              <button class="button is-danger is-small mt-2" @click="removeButton(button.id)">
+                <span class="icon is-small">
+                  <i class="fas fa-trash"></i>
+                </span>
+                <span>{{ $t('buttonConfig.removeButton') }}</span>
+              </button>
             </div>
           </div>
-          <button class="button is-primary" @click="addButton">{{ $t('buttonForm.addButton') }}</button>
+          <button class="button is-primary" @click="addButton">
+            <span class="icon is-small">
+              <i class="fas fa-plus"></i>
+            </span>
+            <span>{{ $t('buttonForm.addButton') }}</span>
+          </button>
         </form>
       </div>
     </div>

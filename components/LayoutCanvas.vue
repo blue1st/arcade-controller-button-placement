@@ -4,8 +4,18 @@
       <div class="content">
         <h4>{{ $t('layoutCanvas.title') }}</h4>
         <canvas ref="canvas" width="600" height="400" class="border scaled-canvas"></canvas>
-        <button class="button is-success mt-3" @click="downloadCanvas">{{ $t('layoutCanvas.download') }}</button>
-        <button class="button is-info mt-3 ml-2" @click="shareURL">{{ $t('layoutCanvas.share') }}</button>
+        <button class="button is-success mt-3" @click="downloadCanvas">
+          <span class="icon is-small">
+            <i class="fas fa-download"></i>
+          </span>
+          <span>{{ $t('layoutCanvas.download') }}</span>
+        </button>
+        <button class="button is-info mt-3 ml-2" @click="shareURL">
+          <span class="icon is-small">
+            <i class="fas fa-share-alt"></i>
+          </span>
+          <span>{{ $t('layoutCanvas.share') }}</span>
+        </button>
       </div>
     </div>
   </div>
