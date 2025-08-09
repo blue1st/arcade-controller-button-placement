@@ -36,28 +36,29 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, nextTick } from 'vue'
 import ButtonForm from '~/components/ButtonForm.vue'
 import LayoutCanvas from '~/components/LayoutCanvas.vue'
 import { buttonLayouts, getJsonFilePath } from '~/components/button-layouts.ts'
+import type { Button, ControllerType } from '~/types/button-types.ts'
 
-const selectedType = ref(null)
-const buttons = ref([])
+const selectedType = ref<ControllerType | null>(null)
+const buttons = ref<Button[]>([])
 const { setLocale, locale } = useI18n()
 
 // 機種を選択
-const selectType = (type) => {
+const selectType = (type: ControllerType) => {
   selectedType.value = type
   loadButtons(type)
 }
 
 // ボタンデータをロード
-const loadButtons = async (type) => {
+const loadButtons = async (type: ControllerType) => {
   try {
-    const jsonFilePath = getJsonFilePath(type)
+    const jsonFilePath = getJsonFilePath(type.id)
     if (!jsonFilePath) {
-      console.error('JSONファイルパスが見つかりません:', type)
+      console.error('JSONファイルパスが見つかりません:', type.id)
       return
     }
     
@@ -69,12 +70,12 @@ const loadButtons = async (type) => {
       buttons.value = data.buttons || []
     }
     console.log("ボタンデータをロードに成功しました")
-  } catch (error) {
+  } catch (error: any) {
     console.error('ボタンデータのロードに失敗しました:', error)
   }
 }
 
-const updateButtons = (newButtons) => {
+const updateButtons = (newButtons: Button[]) => {
   buttons.value = newButtons
 }
 

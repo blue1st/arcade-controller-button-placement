@@ -66,18 +66,19 @@
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { onMounted, ref, watch } from 'vue'
 import { buttonLayouts, getJsonFilePath, getLayoutLabel } from '~/components/button-layouts.ts'
 import { compressToBase64, decompressFromBase64 } from 'lz-string'
+import type { Button, LayoutConfig } from '~/types/button-types.ts'
 
-const props = defineProps({ 
-  buttons: Array
-})
+const props = defineProps<{ 
+  buttons: Button[]
+}>()
 const emit = defineEmits(['update'])
 
-const localButtons = ref(JSON.parse(JSON.stringify(props.buttons || [])))
-const accordionOpen = ref({})
+const localButtons = ref<Button[]>(JSON.parse(JSON.stringify(props.buttons || [])))
+const accordionOpen = ref<Record<string, boolean>>({})
 const selectedLayout = ref('default')
 
 watch(() => props.buttons, (newVal) => {
@@ -94,9 +95,9 @@ const addButton = () => {
   emitUpdate()
 }
 
-const removeButton = (id) => {
+const removeButton = (id: number) => {
   // 確認ダイアログを表示
-  if (!confirm($t('buttonForm.removeButtonConfirm'))) {
+  if (!confirm('ボタンを削除します。よろしいですか？')) {
     return;
   }
   
@@ -104,7 +105,7 @@ const removeButton = (id) => {
   emitUpdate()
 }
 
-const toggleAccordion = (id) => {
+const toggleAccordion = (id: string) => {
   accordionOpen.value[id] = !accordionOpen.value[id]
 }
 
@@ -126,10 +127,11 @@ const loadSelectedLayout = async () => {
     const defaultButtons = await response.json()
     localButtons.value = defaultButtons
     emitUpdate()
-  } catch (error) {
+  } catch (error: any) {
     console.error('Failed to load selected layout:', error)
   }
 }
+
 // URLパラメータからボタン設定を読み込む
 const loadFromUrlParams = () => {
   const urlParams = new URLSearchParams(window.location.search)
@@ -148,11 +150,12 @@ const loadFromUrlParams = () => {
           emitUpdate()
         }
       }
-    } catch (error) {
+    } catch (error: any) {
       console.error('URLパラメータの解析に失敗しました:', error)
     }
   }
 }
+
 // URLパラメータがある場合は初期ロードをスキップ
 onMounted(() => {
   loadFromUrlParams()

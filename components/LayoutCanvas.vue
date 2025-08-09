@@ -3,20 +3,23 @@
     <div class="card-content">
       <div class="content">
         <h4>{{ $t('layoutCanvas.title') }}</h4>
-        <canvas ref="canvas" width="600" height="400"" class="border scaled-canvas"></canvas>
+        <canvas ref="canvas" width="600" height="400" class="border scaled-canvas"></canvas>
         <button class="button is-success mt-3" @click="downloadCanvas">{{ $t('layoutCanvas.download') }}</button>
-<button class="button is-info mt-3 ml-2" @click="shareURL">{{ $t('layoutCanvas.share') }}</button>
+        <button class="button is-info mt-3 ml-2" @click="shareURL">{{ $t('layoutCanvas.share') }}</button>
       </div>
     </div>
   </div>
 </template>
 
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted, watch } from 'vue'
 import { compressToBase64, decompressFromBase64 } from 'lz-string'
+import type { Button } from '~/types/button-types.ts'
 
-const props = defineProps({ buttons: Array })
-const canvas = ref(null)
+const props = defineProps<{ 
+  buttons: Button[]
+}>()
+const canvas = ref<HTMLCanvasElement | null>(null)
 
 const draw = () => {
   if (!canvas.value) return
@@ -31,7 +34,10 @@ const draw = () => {
 
   // 描画倍率を計算
   const parentElement = canvas.value.parentElement
-  const scaleX = parentElement.widthidth / canvas.value.width
+  if (parentElement === null) {
+    return
+  }
+  const scaleX = parentElement.width / canvas.value.width
   const scaleY = parentElement.height / canvas.value.height
   const scale = Math.min(scaleX, scaleY)
 
