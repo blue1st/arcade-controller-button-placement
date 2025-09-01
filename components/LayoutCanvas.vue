@@ -81,8 +81,8 @@ const draw = () => {
     ctx.lineWidth = 3
     ctx.textAlign = 'center'
     ctx.textBaseline = 'middle'
-    const fontSize = 24 - 2 * button.label.length 
-    ctx.font = `${fontSize < 1 ? 1 : fontSize}px Arial`
+    const fontSize = 28 - 4 * button.label.length 
+    ctx.font = `${fontSize < 10 ? 10 : fontSize}px Arial`
     ctx.fillText(button.label, button.x, button.y)
   })
 }
