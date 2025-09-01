@@ -34,9 +34,9 @@
 
     <footer class="footer">
       <div class="content has-text-centered">
-        <p>{{ $t('footer.copyright') }}</p>
         <p><a href="https://github.com/blue1st/arcade-controller-button-placement/wiki/%E3%83%97%E3%83%AD%E9%81%B8%E6%89%8B%E3%81%AE%E3%83%AC%E3%82%A4%E3%82%A2%E3%82%A6%E3%83%88%E9%9B%86" target="_blank">プロ選手のボタンレイアウト集</a></p>
         <p><a href="https://github.com/blue1st/arcade-controller-button-placement" target="_blank"><span class="icon is-small"><i class="fab fa-github"></i></span> {{ $t('footer.githubLink') }}</a></p>
+        <p>{{ $t('footer.copyright') }}</p>
       </div>
     </footer>
   </div>
