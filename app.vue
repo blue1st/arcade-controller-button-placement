@@ -66,9 +66,12 @@ const loadFromUrlParams = () => {
 
       if (decompressed) {
         const parsedButtons = JSON.parse(decompressed)
-        console.log(parsedButtons)
         if (Array.isArray(parsedButtons)) {
-          buttons.value = parsedButtons
+          // idを振り直す
+          buttons.value = parsedButtons.map((button: any, index: number) => ({
+            ...button,
+            id: index + 1
+          }))
         }
       }
     } catch (error: any) {

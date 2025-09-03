@@ -117,8 +117,8 @@ const shareURL = () => {
   // URLパラメータを取得
   const urlParams = new URLSearchParams(window.location.search);
   
-  // ボタンデータをJSON形式に変換
-  const buttonsData = JSON.stringify(props.buttons);
+  // ボタンデータをJSON形式に変換（idを削除）
+  const buttonsData = JSON.stringify(props.buttons.map(({ id, ...button }) => button));
   
   // LZStringで圧縮
   const compressed = compressToBase64(buttonsData);
