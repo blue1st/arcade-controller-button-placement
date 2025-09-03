@@ -5,6 +5,7 @@ export const buttonLayouts = [
   { name: 'pws-type-b', jsonFile: './pws-type-b.json', label: 'PWS Type B' },
   { name: 'pws-type-c', jsonFile: './pws-type-c.json', label: 'PWS Type C' },
   { name: 'pws-type-d', jsonFile: './pws-type-d.json', label: 'PWS Type D / VAMILO FK2' },
+  { name: 'pws-type-e', jsonFile: './pws-type-e.json', label: 'PWS Type E' },
   { name: 'pws-type-f', jsonFile: './pws-type-f.json', label: 'PWS Type F' },
   { name: 'hori-nolva', jsonFile: './hori-nolva.json', label: 'HORI Nolva' },
   { name: 'rushbox', jsonFile: './rushbox-layout.json', label: 'Rushbox' },
