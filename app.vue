@@ -7,6 +7,9 @@
             <h1 class="title level-item">{{ $t('header.main') }}</h1>
           </div>
           <div class="buttons is-right level-item">
+            <a class="button is-medium" href="https://github.com/blue1st/arcade-controller-button-placement/wiki/" target="_blank">
+              {{ $t('header.buttonLayoutsLink') }}
+            </a>
             <button class="button is-medium" @click="changeLang">
               <span class="icon is-medium">
                 <i class="fas fa-language"></i>
