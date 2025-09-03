@@ -11,13 +11,13 @@ export default defineNuxtConfig({
         { property: 'og:description', content: 'アケコンボタン配置図作成ツール' },
         { property: 'og:type', content: 'website' },
         { property: 'og:url', content: 'https://blue1st.github.io/arcade-controller-button-placement/' },
-        { property: 'og:image', content: 'https://blue1st.github.io/arcade-controller-button-placement/preview.png' },
+        { property: 'og:image', content: 'https://blue1st.github.io/arcade-controller-button-placement/ogp.png' },
         { property: 'og:site_name', content: 'Arcade Controller Button Placement' },
         { property: 'og:locale', content: 'ja_JP' },
         { name: 'twitter:card', content: 'summary_large_image' },
         { name: 'twitter:title', content: 'Arcade Controller Button Placement' },
         { name: 'twitter:description', content: 'アケコンボタン配置図作成ツール' },
-        { name: 'twitter:image', content: 'https://blue1st.github.io/arcade-controller-button-placement/preview.png' }
+        { name: 'twitter:image', content: 'https://blue1st.github.io/arcade-controller-button-placement/ogp.png' }
       ],
       link: [
         {
