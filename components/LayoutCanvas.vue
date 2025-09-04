@@ -70,10 +70,6 @@ const draw = () => {
     
     // Draw button circle
     ctx.beginPath()
-    ctx.arc(button.x, button.y + 1, radius + 3, 0, Math.PI * 2)
-    ctx.fillStyle = '#2980b9'
-    ctx.fill()
-    ctx.beginPath()
     ctx.arc(button.x, button.y, radius, 0, Math.PI * 2)
     ctx.fillStyle = '#3498db'
     ctx.fill()
