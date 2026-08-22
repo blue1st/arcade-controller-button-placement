@@ -3,7 +3,7 @@
     <div class="card-content">
       <div class="content">
         <h4>{{ $t('layoutCanvas.title') }}</h4>
-        <canvas ref="canvas" width="600" height="400" class="border scaled-canvas"></canvas>
+        <canvas ref="canvas" width="600" height="400" class="has-border scaled-canvas"></canvas>
         <button class="button is-success mt-3" @click="downloadCanvas">
           <span class="icon is-small">
             <i class="fas fa-download"></i>
@@ -22,9 +22,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, onUnmounted, watch } from 'vue'
 import { compressToBase64, decompressFromBase64 } from 'lz-string'
 import type { Button } from '~/types/button-types.ts'
+
+const { t } = useI18n()
 
 const props = defineProps<{ 
   buttons: Button[]
@@ -95,8 +97,11 @@ const draw = () => {
 
 onMounted(() => {
   draw()
-  // ウィンドウのリサイズイベントにハンドラを追加
-  window.addEventListener('resize', draw);
+  window.addEventListener('resize', draw)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('resize', draw)
 })
 
 watch(() => props.buttons, () => {
@@ -129,7 +134,7 @@ const shareURL = () => {
   
   // URLをコピー
   navigator.clipboard.writeText(shareUrl).then(() => {
-    alert('共有用URLがクリップボードにコピーされました！');
+    alert(t('layoutCanvas.shareCopied'));
   }).catch(err => {
     console.error('URLのコピーに失敗しました: ', err);
   });

@@ -20,10 +20,10 @@
             </span>
             <span>{{ $t('buttonForm.resetButton') }}</span>
           </button>
-          <div v-for="(button, index) in localButtons" :key="button.id" class="mb-3 border rounded">
-            <div class="p-3 bg-light d-flex justify-content-between align-items-center accordion-header" @click="toggleAccordion(button.id)">
+          <div v-for="(button, index) in localButtons" :key="button.id" class="mb-3 box">
+            <div class="p-3 has-background-light is-flex is-justify-content-space-between is-align-items-center accordion-header" @click="toggleAccordion(button.id)">
               <span>{{ accordionOpen[button.id] ? '▲' : '▼' }}</span>
-              <span class="fw-bold">Button {{ index + 1 }}: {{ button.label }}</span>
+              <span class="has-text-weight-bold">Button {{ index + 1 }}: {{ button.label }}</span>
             </div>
             <div v-show="accordionOpen[button.id]" class="p-3">
               <div class="field">
@@ -86,6 +86,8 @@ import { onMounted, ref, watch } from 'vue'
 import { buttonLayouts, getJsonFilePath, getLayoutLabel } from '~/components/button-layouts.ts'
 import type { Button, LayoutConfig } from '~/types/button-types.ts'
 
+const { t } = useI18n()
+
 const props = defineProps<{ 
   buttons: Button[]
 }>()
@@ -110,8 +112,7 @@ const addButton = () => {
 }
 
 const removeButton = (id: number) => {
-  // 確認ダイアログを表示
-  if (!confirm('ボタンを削除します。よろしいですか？')) {
+  if (!confirm(t('buttonForm.removeButtonConfirm'))) {
     return;
   }
   
@@ -125,8 +126,7 @@ const toggleAccordion = (id: string) => {
 
 const loadSelectedLayout = async () => {
   try {
-    // 確認ダイアログを表示
-    if (localButtons.value.length > 0 && !confirm('レイアウトを変更します。よろしいですか？')) {
+    if (localButtons.value.length > 0 && !confirm(t('buttonForm.changeLayoutConfirm'))) {
       return;
     }
     

@@ -26,7 +26,6 @@ export default defineNuxtConfig({
         }
       ]
     },
-    cdnURL: '/arcade-controller-button-placement/',
     baseURL: '/arcade-controller-button-placement/'
   },
   i18n: {

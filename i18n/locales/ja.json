@@ -5,7 +5,8 @@
   },
   "footer": {
     "copyright": "© 2025 アーケードコントローラーボタン配置",
-    "githubLink": "GitHub"
+    "githubLink": "GitHub",
+    "proLayoutsLink": "プロ選手のボタンレイアウト集"
   },
   "buttonForm": {
     "title": "ボタン設定",
@@ -15,7 +16,8 @@
     "cancel": "キャンセル",
     "selectLayout": "レイアウト選択",
     "resetButton": "レイアウトを再設定する",
-    "removeButtonConfirm": "このボタンを削除してもよろしいですか？"
+    "removeButtonConfirm": "このボタンを削除してもよろしいですか？",
+    "changeLayoutConfirm": "レイアウトを変更します。よろしいですか？"
   },
   "buttonConfig": {
     "label": "ラベル",
@@ -27,6 +29,7 @@
   "layoutCanvas": {
     "title": "レイアウトプレビュー",
     "download": "PNGとしてダウンロード",
-    "share": "URLを共有"
+    "share": "URLを共有",
+    "shareCopied": "共有用URLがクリップボードにコピーされました！"
   }
 }

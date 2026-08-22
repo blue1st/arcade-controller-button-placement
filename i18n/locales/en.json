@@ -5,7 +5,8 @@
   },
   "footer": {
     "copyright": "© 2025 Arcade Controller Button Placement",
-    "githubLink": "GitHub"
+    "githubLink": "GitHub",
+    "proLayoutsLink": "Pro Player Button Layouts"
   },
   "buttonForm": {
     "title": "Button Configuration",
@@ -15,7 +16,8 @@
     "cancel": "Cancel",
     "selectLayout": "Select Layout",
     "resetButton": "Reset Button",
-    "removeButtonConfirm": "Are you sure you want to remove this button?"
+    "removeButtonConfirm": "Are you sure you want to remove this button?",
+    "changeLayoutConfirm": "Change layout? Are you sure?"
   },
   "buttonConfig": {
     "label": "Label",
@@ -27,6 +29,7 @@
   "layoutCanvas": {
     "title": "Layout Preview",
     "download": "Download as PNG",
-    "share": "Share URL"
+    "share": "Share URL",
+    "shareCopied": "Share URL copied to clipboard!"
   }
 }

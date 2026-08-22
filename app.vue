@@ -37,7 +37,7 @@
 
     <footer class="footer">
       <div class="content has-text-centered">
-        <p><a href="https://github.com/blue1st/arcade-controller-button-placement/wiki/" target="_blank">プロ選手のボタンレイアウト集</a></p>
+        <p><a href="https://github.com/blue1st/arcade-controller-button-placement/wiki/" target="_blank">{{ $t('footer.proLayoutsLink') }}</a></p>
         <p><a href="https://github.com/blue1st/arcade-controller-button-placement" target="_blank"><span class="icon is-small"><i class="fab fa-github"></i></span> {{ $t('footer.githubLink') }}</a></p>
         <p>{{ $t('footer.copyright') }}</p>
       </div>
@@ -46,14 +46,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, onMounted } from 'vue'
 import ButtonForm from '~/components/ButtonForm.vue'
 import LayoutCanvas from '~/components/LayoutCanvas.vue'
-import { buttonLayouts, getJsonFilePath } from '~/components/button-layouts.ts'
-import { compressToBase64, decompressFromBase64 } from 'lz-string'
-import type { Button, ControllerType } from '~/types/button-types.ts'
+import { buttonLayouts } from '~/components/button-layouts.ts'
+import { decompressFromBase64 } from 'lz-string'
+import type { Button } from '~/types/button-types.ts'
 
-const selectedType = ref<ControllerType | null>(null)
 const buttons = ref<Button[]>([])
 const { setLocale, locale } = useI18n()
 
@@ -84,33 +83,6 @@ const loadFromUrlParams = () => {
 
   if (buttons.value.length === 0) {
     loadInitialButtons()
-  }
-}
-
-// 機種を選択
-const selectType = (type: ControllerType) => {
-  selectedType.value = type
-  loadButtons(type)
-}
-
-// ボタンデータをロード
-const loadButtons = async (type: ControllerType) => {
-  try {
-    const jsonFilePath = getJsonFilePath(type.id)
-    if (!jsonFilePath) {
-      console.error('JSONファイルパスが見つかりません:', type.id)
-      return
-    }
-    
-    const response = await fetch(jsonFilePath)
-    
-    if (response && response.ok) {
-      const data = await response.json()
-      buttons.value = data.buttons || []
-    }
-    console.log("ボタンデータをロードに成功しました")
-  } catch (error: any) {
-    console.error('ボタンデータのロードに失敗しました:', error)
   }
 }
 
