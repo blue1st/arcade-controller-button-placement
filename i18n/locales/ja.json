@@ -30,6 +30,8 @@
     "title": "レイアウトプレビュー",
     "download": "PNGとしてダウンロード",
     "share": "URLを共有",
-    "shareCopied": "共有用URLがクリップボードにコピーされました！"
+    "shareCopied": "共有用URLがクリップボードにコピーされました！",
+    "dragHint": "ボタンをドラッグして位置を変更できます",
+    "amazonLink": "Amazonで見る"
   }
 }

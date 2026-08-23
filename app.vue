@@ -1,16 +1,16 @@
 <template>
   <div class="is-flex is-flex-direction-column is-min-vh-100">
-    <header class="hero is-primary">
+    <header class="hero is-dark">
       <div class="hero-body">
         <div class="container level">
           <div class="level-left">
-            <h1 class="title level-item">{{ $t('header.main') }}</h1>
+            <h1 class="title level-item has-text-white">{{ $t('header.main') }}</h1>
           </div>
           <div class="buttons is-right level-item">
-            <a class="button is-medium" href="https://github.com/blue1st/arcade-controller-button-placement/wiki/" target="_blank">
+            <a class="button is-medium is-white" href="https://github.com/blue1st/arcade-controller-button-placement/wiki/" target="_blank">
               {{ $t('header.buttonLayoutsLink') }}
             </a>
-            <button class="button is-medium" @click="changeLang">
+            <button class="button is-medium is-white" @click="changeLang">
               <span class="icon is-medium">
                 <i class="fas fa-language"></i>
               </span>
@@ -24,14 +24,7 @@
     <main class="section">
       <div class="container">
         <!-- メイン画面 -->
-        <div class="columns">
-          <div class="column is-8">
-            <LayoutCanvas :buttons="buttons" />
-          </div>
-          <div class="column is-4">
-            <ButtonForm @update="updateButtons" :buttons="buttons" />
-          </div>
-        </div>
+        <LayoutCanvas :buttons="buttons" @update="updateButtons" @loadLayout="loadLayout" />
       </div>
     </main>
 
@@ -47,7 +40,6 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import ButtonForm from '~/components/ButtonForm.vue'
 import LayoutCanvas from '~/components/LayoutCanvas.vue'
 import { buttonLayouts } from '~/components/button-layouts.ts'
 import { decompressFromBase64 } from 'lz-string'
@@ -90,6 +82,18 @@ const updateButtons = (newButtons: Button[]) => {
   buttons.value = newButtons
 }
 
+const loadLayout = async (layoutName: string) => {
+  const layout = buttonLayouts.find(l => l.name === layoutName)
+  if (!layout) return
+  try {
+    const response = await fetch(layout.jsonFile)
+    const data = await response.json()
+    buttons.value = data || []
+  } catch (error) {
+    console.error('Failed to load layout:', error)
+  }
+}
+
 // 初期ボタン設定をロードする処理
 const loadInitialButtons = () => {
   if (buttons.value.length === 0) {
@@ -126,6 +130,105 @@ onMounted(() => {
 
 <style>
 body {
-  background-color: #f8f9fa;
+  background-color: #1a1a2e;
+  color: #eee;
+}
+
+.card {
+  background-color: #16213e;
+  border: 1px solid #0f3460;
+  border-radius: 12px;
+}
+
+.card-content {
+  background-color: transparent;
+}
+
+.button.is-primary {
+  background-color: #e94560;
+  border-color: #e94560;
+}
+
+.button.is-primary:hover {
+  background-color: #d63851;
+}
+
+.button.is-success {
+  background-color: #4ecca3;
+  border-color: #4ecca3;
+}
+
+.button.is-success:hover {
+  background-color: #3db892;
+}
+
+.button.is-info {
+  background-color: #533483;
+  border-color: #533483;
+}
+
+.button.is-info:hover {
+  background-color: #452a6e;
+}
+
+.button.is-secondary {
+  background-color: #0f3460;
+  border-color: #0f3460;
+}
+
+.button.is-secondary:hover {
+  background-color: #1a4a7a;
+}
+
+.button.is-warning {
+  background-color: #f39c12;
+  border-color: #f39c12;
+  color: #1a1a2e;
+}
+
+.button.is-warning:hover {
+  background-color: #e08e0b;
+}
+
+.button.is-danger {
+  background-color: #e94560;
+  border-color: #e94560;
+}
+
+.button.is-danger:hover {
+  background-color: #d63851;
+}
+
+.input, .select select {
+  background-color: #1a1a2e;
+  border-color: #0f3460;
+  color: #eee;
+}
+
+.input:focus, .select select:focus {
+  border-color: #e94560;
+}
+
+.button-editor {
+  background-color: #16213e;
+  border-color: #e94560;
+  color: #eee;
+}
+
+.button-editor label {
+  color: #aaa;
+}
+
+.help {
+  color: #888;
+}
+
+.footer {
+  background-color: #16213e;
+  color: #888;
+}
+
+.footer a {
+  color: #4ecca3;
 }
 </style>

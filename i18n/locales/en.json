@@ -30,6 +30,8 @@
     "title": "Layout Preview",
     "download": "Download as PNG",
     "share": "Share URL",
-    "shareCopied": "Share URL copied to clipboard!"
+    "shareCopied": "Share URL copied to clipboard!",
+    "dragHint": "Drag buttons to change their position",
+    "amazonLink": "View on Amazon"
   }
 }
