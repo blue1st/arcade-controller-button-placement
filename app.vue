@@ -1,12 +1,27 @@
 <template>
   <div class="is-flex is-flex-direction-column is-min-vh-100">
     <header class="hero is-dark">
-      <div class="hero-body">
+      <div class="hero-body py-4">
         <div class="container level">
           <div class="level-left">
-            <h1 class="title level-item has-text-white">{{ $t('header.main') }}</h1>
+            <div>
+              <h1 class="title level-item has-text-white mb-1">{{ $t('header.main') }}</h1>
+              <span class="tag is-success is-light is-rounded">
+                <i class="fas fa-robot mr-1"></i> {{ $t('webmcp.badge') }}
+              </span>
+            </div>
           </div>
           <div class="buttons is-right level-item">
+            <!--
+            <button class="button is-medium is-emerald-badge" @click="isInspectorOpen = true">
+              <span class="icon"><i class="fas fa-robot"></i></span>
+              <span>{{ $t('webmcp.openInspector') }}</span>
+            </button>
+            <button class="button is-medium is-info" @click="isGuideOpen = true">
+              <span class="icon"><i class="fas fa-question-circle"></i></span>
+              <span>{{ $t('webmcp.openGuide') }}</span>
+            </button>
+          -->
             <a class="button is-medium is-white" href="https://github.com/blue1st/arcade-controller-button-placement/wiki/" target="_blank">
               {{ $t('header.buttonLayoutsLink') }}
             </a>
@@ -28,6 +43,17 @@
       </div>
     </main>
 
+    <!-- WebMCP インスペクター & ガイドモーダル -->
+    <WebMCPInspector 
+      :isOpen="isInspectorOpen" 
+      :tools="registeredTools" 
+      @close="isInspectorOpen = false" 
+    />
+    <WebMCPGuideModal 
+      :isOpen="isGuideOpen" 
+      @close="isGuideOpen = false" 
+    />
+
     <footer class="footer">
       <div class="content has-text-centered">
         <p><a href="https://github.com/blue1st/arcade-controller-button-placement/wiki/" target="_blank">{{ $t('footer.proLayoutsLink') }}</a></p>
@@ -41,12 +67,22 @@
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import LayoutCanvas from '~/components/LayoutCanvas.vue'
+import WebMCPInspector from '~/components/WebMCPInspector.vue'
+import WebMCPGuideModal from '~/components/WebMCPGuideModal.vue'
 import { buttonLayouts } from '~/components/button-layouts.ts'
 import { decompressFromBase64 } from 'lz-string'
 import type { Button } from '~/types/button-types.ts'
+import { useWebMCP, type WebMCPTool } from '~/composables/useWebMCP'
 
 const buttons = ref<Button[]>([])
 const { setLocale, locale } = useI18n()
+
+const isInspectorOpen = ref(false)
+const isGuideOpen = ref(false)
+const registeredTools = ref<WebMCPTool[]>([])
+
+const webmcp = useWebMCP()
+const nuxtApp = useNuxtApp()
 
 // URLパラメータからボタン設定を読み込む
 const loadFromUrlParams = () => {
@@ -121,9 +157,23 @@ const changeLang = () => {
   }
 }
 
+// WebMCP ツールの初期化と登録
+const initWebMCP = () => {
+  const tools = webmcp.createTools(
+    () => buttons.value,
+    (newButtons) => { buttons.value = newButtons },
+    loadLayout
+  )
+  registeredTools.value = tools
+  if (nuxtApp.$webmcp && typeof nuxtApp.$webmcp.registerTools === 'function') {
+    nuxtApp.$webmcp.registerTools(tools)
+  }
+}
+
 // URLパラメータがある場合は初期ロードをスキップ
 onMounted(() => {
   loadFromUrlParams()
+  initWebMCP()
 })
 
 </script>
@@ -221,6 +271,19 @@ body {
 
 .help {
   color: #888;
+}
+
+.button.is-emerald-badge {
+  background-color: #4ecca3;
+  border-color: #4ecca3;
+  color: #1a1a2e;
+  font-weight: bold;
+}
+
+.button.is-emerald-badge:hover {
+  background-color: #3db892;
+  border-color: #3db892;
+  color: #1a1a2e;
 }
 
 .footer {

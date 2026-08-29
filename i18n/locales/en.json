@@ -33,5 +33,21 @@
     "shareCopied": "Share URL copied to clipboard!",
     "dragHint": "Drag buttons to change their position",
     "amazonLink": "View on Amazon"
+  },
+  "webmcp": {
+    "badge": "WebMCP Enabled",
+    "inspectorTitle": "WebMCP AI Debugger",
+    "openInspector": "AI / WebMCP Debugger",
+    "openGuide": "WebMCP Guide & Benefits",
+    "toolsTab": "Registered WebMCP Tools",
+    "simulatorTab": "AI Agent Simulator",
+    "logsTab": "Execution Logs",
+    "guideTitle": "WebMCP Integration Guide & Verification",
+    "runSimulation": "Simulate AI Tool Call",
+    "promptLabel": "Sample Instructions:",
+    "customPromptPlaceholder": "Enter instruction (e.g. Load Hitbox layout and add a 24mm button on the right)",
+    "clearLogs": "Clear Logs",
+    "toolExecuted": "WebMCP tool '{name}' executed",
+    "noLogs": "No execution logs yet"
   }
 }

@@ -33,5 +33,21 @@
     "shareCopied": "共有用URLがクリップボードにコピーされました！",
     "dragHint": "ボタンをドラッグして位置を変更できます",
     "amazonLink": "Amazonで見る"
+  },
+  "webmcp": {
+    "badge": "WebMCP 対応",
+    "inspectorTitle": "WebMCP AI デバッガー",
+    "openInspector": "AI / WebMCP デバッガー",
+    "openGuide": "WebMCP ガイド & 恩恵確認",
+    "toolsTab": "公開 WebMCP ツール一覧",
+    "simulatorTab": "AI エージェント シミュレーター",
+    "logsTab": "実行ログ",
+    "guideTitle": "WebMCP 対応の解説と恩恵の確認方法",
+    "runSimulation": "AI ツール呼び出しをシミュレート実行",
+    "promptLabel": "自然言語指示サンプル:",
+    "customPromptPlaceholder": "指示を入力（例: Hitboxレイアウトを読み込み、追加で右側に24mmボタンを配置）",
+    "clearLogs": "ログをクリア",
+    "toolExecuted": "WebMCP ツール「{name}」が実行されました",
+    "noLogs": "実行ログはまだありません"
   }
 }
