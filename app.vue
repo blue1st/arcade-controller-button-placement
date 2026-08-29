@@ -70,7 +70,7 @@ import LayoutCanvas from '~/components/LayoutCanvas.vue'
 import WebMCPInspector from '~/components/WebMCPInspector.vue'
 import WebMCPGuideModal from '~/components/WebMCPGuideModal.vue'
 import { buttonLayouts } from '~/components/button-layouts.ts'
-import { decompressFromBase64 } from 'lz-string'
+import LZString from 'lz-string'
 import type { Button } from '~/types/button-types.ts'
 import { useWebMCP, type WebMCPTool } from '~/composables/useWebMCP'
 
@@ -92,7 +92,7 @@ const loadFromUrlParams = () => {
   if (dataParam) {
     try {
       // LZStringでデータをデコード
-      const decompressed = decompressFromBase64(dataParam)
+      const decompressed = LZString.decompressFromBase64(dataParam)
 
       if (decompressed) {
         const parsedButtons = JSON.parse(decompressed)

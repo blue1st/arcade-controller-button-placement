@@ -1,7 +1,7 @@
 import { ref, readonly } from 'vue'
 import type { Button } from '~/types/button-types'
 import { buttonLayouts } from '~/components/button-layouts'
-import { compressToBase64 } from 'lz-string'
+import LZString from 'lz-string'
 
 export interface WebMCPTool {
   name: string
@@ -286,7 +286,7 @@ export const useWebMCP = () => {
         execute: async () => {
           const current = getButtons()
           const buttonsData = JSON.stringify(current.map(({ id, ...button }) => button))
-          const compressed = compressToBase64(buttonsData)
+          const compressed = LZString.compressToBase64(buttonsData)
           const shareUrl = `${window.location.origin}${window.location.pathname}?data=${compressed}`
           return {
             shareUrl,

@@ -82,7 +82,7 @@
 
 <script setup lang="ts">
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue'
-import { compressToBase64, decompressFromBase64 } from 'lz-string'
+import LZString from 'lz-string'
 import { buttonLayouts } from '~/components/button-layouts.ts'
 import type { Button } from '~/types/button-types.ts'
 
@@ -410,7 +410,7 @@ const shareURL = () => {
   const buttonsData = JSON.stringify(props.buttons.map(({ id, ...button }) => button));
   
   // LZStringで圧縮
-  const compressed = compressToBase64(buttonsData);
+  const compressed = LZString.compressToBase64(buttonsData);
   
   // 圧縮されたデータをURLパラメータに追加
   urlParams.set('data', compressed);
