@@ -48,6 +48,12 @@
     "customPromptPlaceholder": "指示を入力（例: Hitboxレイアウトを読み込み、追加で右側に24mmボタンを配置）",
     "clearLogs": "ログをクリア",
     "toolExecuted": "WebMCP ツール「{name}」が実行されました",
-    "noLogs": "実行ログはまだありません"
+    "noLogs": "実行ログはまだありません",
+    "widgetTitle": "WebMCP AI アシスタント",
+    "widgetSubtitle": "Web Model Context Protocol",
+    "tokenPlaceholder": "WebMCP トークンを入力...",
+    "connectToken": "接続設定",
+    "tokenConnected": "接続済み",
+    "registeredToolsCount": "{count} 個のツールが公開中"
   }
 }

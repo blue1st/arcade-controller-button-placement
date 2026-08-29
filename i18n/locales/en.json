@@ -48,6 +48,12 @@
     "customPromptPlaceholder": "Enter instruction (e.g. Load Hitbox layout and add a 24mm button on the right)",
     "clearLogs": "Clear Logs",
     "toolExecuted": "WebMCP tool '{name}' executed",
-    "noLogs": "No execution logs yet"
+    "noLogs": "No execution logs yet",
+    "widgetTitle": "WebMCP AI Assistant",
+    "widgetSubtitle": "Web Model Context Protocol",
+    "tokenPlaceholder": "Enter WebMCP Token...",
+    "connectToken": "Connect",
+    "tokenConnected": "Connected",
+    "registeredToolsCount": "{count} Tools Active"
   }
 }

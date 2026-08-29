@@ -12,16 +12,10 @@
             </div>
           </div>
           <div class="buttons is-right level-item">
-            <!--
-            <button class="button is-medium is-emerald-badge" @click="isInspectorOpen = true">
+            <button class="button is-medium is-emerald-badge mr-2" @click="isInspectorOpen = true">
               <span class="icon"><i class="fas fa-robot"></i></span>
               <span>{{ $t('webmcp.openInspector') }}</span>
             </button>
-            <button class="button is-medium is-info" @click="isGuideOpen = true">
-              <span class="icon"><i class="fas fa-question-circle"></i></span>
-              <span>{{ $t('webmcp.openGuide') }}</span>
-            </button>
-          -->
             <a class="button is-medium is-white" href="https://github.com/blue1st/arcade-controller-button-placement/wiki/" target="_blank">
               {{ $t('header.buttonLayoutsLink') }}
             </a>
@@ -43,7 +37,7 @@
       </div>
     </main>
 
-    <!-- WebMCP インスペクター & ガイドモーダル -->
+    <!-- WebMCP インスペクター & ガイドモーダル ＆ フローティングウィジェット -->
     <WebMCPInspector 
       :isOpen="isInspectorOpen" 
       :tools="registeredTools" 
@@ -52,6 +46,11 @@
     <WebMCPGuideModal 
       :isOpen="isGuideOpen" 
       @close="isGuideOpen = false" 
+    />
+    <WebMCPWidget
+      :tools="registeredTools"
+      @openInspector="isInspectorOpen = true"
+      @openGuide="isGuideOpen = true"
     />
 
     <footer class="footer">
@@ -69,6 +68,7 @@ import { ref, onMounted } from 'vue'
 import LayoutCanvas from '~/components/LayoutCanvas.vue'
 import WebMCPInspector from '~/components/WebMCPInspector.vue'
 import WebMCPGuideModal from '~/components/WebMCPGuideModal.vue'
+import WebMCPWidget from '~/components/WebMCPWidget.vue'
 import { buttonLayouts } from '~/components/button-layouts.ts'
 import LZString from 'lz-string'
 import type { Button } from '~/types/button-types.ts'
