@@ -6,13 +6,13 @@
           <div class="level-left">
             <div>
               <h1 class="title level-item has-text-white mb-1">{{ $t('header.main') }}</h1>
-              <span class="tag is-success is-light is-rounded">
+              <span v-if="isDebug" class="tag is-success is-light is-rounded">
                 <i class="fas fa-robot mr-1"></i> {{ $t('webmcp.badge') }}
               </span>
             </div>
           </div>
           <div class="buttons is-right level-item">
-            <button class="button is-medium is-emerald-badge mr-2" @click="isInspectorOpen = true">
+            <button v-if="isDebug" class="button is-medium is-emerald-badge mr-2" @click="isInspectorOpen = true">
               <span class="icon"><i class="fas fa-robot"></i></span>
               <span>{{ $t('webmcp.openInspector') }}</span>
             </button>
@@ -48,6 +48,7 @@
       @close="isGuideOpen = false" 
     />
     <WebMCPWidget
+      v-if="isDebug"
       :tools="registeredTools"
       @openInspector="isInspectorOpen = true"
       @openGuide="isGuideOpen = true"
@@ -77,6 +78,7 @@ import { useWebMCP, type WebMCPTool } from '~/composables/useWebMCP'
 const buttons = ref<Button[]>([])
 const { setLocale, locale } = useI18n()
 
+const isDebug = ref(false)
 const isInspectorOpen = ref(false)
 const isGuideOpen = ref(false)
 const registeredTools = ref<WebMCPTool[]>([])
@@ -172,8 +174,20 @@ const initWebMCP = () => {
 
 // URLパラメータがある場合は初期ロードをスキップ
 onMounted(() => {
+  const urlParams = new URLSearchParams(window.location.search)
+  isDebug.value = urlParams.get('debug') === 'true' || urlParams.get('debug') === '1' || urlParams.has('debug')
+
   loadFromUrlParams()
   initWebMCP()
+
+  if (typeof window !== 'undefined' && (window as any).WebMCP) {
+    ;(window as any).WebMCP.openInspector = () => {
+      isInspectorOpen.value = true
+    }
+    ;(window as any).WebMCP.openDebugger = () => {
+      isInspectorOpen.value = true
+    }
+  }
 })
 
 </script>
