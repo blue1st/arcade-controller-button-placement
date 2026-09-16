@@ -38,7 +38,7 @@
           </button>
         </div>
         <div class="canvas-wrapper">
-          <canvas ref="canvas" width="600" height="400" class="has-border scaled-canvas" style="touch-action: none; cursor: grab;"></canvas>
+          <canvas ref="canvas" width="600" height="400" class="has-border scaled-canvas" :style="canvasStyle"></canvas>
           <div v-if="selectedButton" class="button-editor" :style="editorPosition">
             <div class="editor-row">
               <label>{{ $t('buttonConfig.label') }}</label>
@@ -106,6 +106,11 @@ const editorPosition = ref({ left: '0px', top: '0px' })
 const selectedLayout = ref('default')
 const previousLayout = ref('default')
 
+const canvasStyle = computed(() => ({
+  touchAction: 'none',
+  cursor: isDragging.value ? 'grabbing' : 'grab'
+}))
+
 const currentLayoutAmazonLink = computed(() => {
   const layout = buttonLayouts.find(l => l.name === selectedLayout.value)
   return layout?.amazonLink || null
@@ -163,6 +168,7 @@ const onPointerDown = (event: PointerEvent) => {
   const button = findButtonAt(x, y)
   if (button) {
     draggingButton.value = button
+    isDragging.value = true
     selectedButton.value = button
     dragOffset.value = { x: x - button.x, y: y - button.y }
     canvas.value?.setPointerCapture(event.pointerId)
@@ -211,6 +217,7 @@ const onPointerUp = (event: PointerEvent) => {
   if (draggingButton.value) {
     canvas.value?.releasePointerCapture(event.pointerId)
     draggingButton.value = null
+    isDragging.value = false
     emit('update', props.buttons.map(b => ({ ...b })))
   }
 }
