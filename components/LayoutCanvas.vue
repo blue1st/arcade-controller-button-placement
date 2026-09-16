@@ -103,12 +103,13 @@ const dragOffset = ref({ x: 0, y: 0 })
 const isDragging = ref(false)
 const selectedButton = ref<Button | null>(null)
 const editorPosition = ref({ left: '0px', top: '0px' })
+const isHoveringButton = ref(false)
 const selectedLayout = ref('default')
 const previousLayout = ref('default')
 
 const canvasStyle = computed(() => ({
   touchAction: 'none',
-  cursor: isDragging.value ? 'grabbing' : 'grab'
+  cursor: isDragging.value ? 'grabbing' : isHoveringButton.value ? 'grab' : 'default'
 }))
 
 const currentLayoutAmazonLink = computed(() => {
@@ -202,8 +203,11 @@ const updateEditorPosition = () => {
 
 
 const onPointerMove = (event: PointerEvent) => {
-  if (!draggingButton.value) return
   const { x, y } = getCanvasCoords(event.clientX, event.clientY)
+  if (!draggingButton.value) {
+    isHoveringButton.value = findButtonAt(x, y) !== null
+    return
+  }
   const newX = Math.max(10, Math.min(canvas.value!.width - 10, x - dragOffset.value.x))
   const newY = Math.max(10, Math.min(canvas.value!.height - 10, y - dragOffset.value.y))
   draggingButton.value.x = newX
@@ -218,8 +222,13 @@ const onPointerUp = (event: PointerEvent) => {
     canvas.value?.releasePointerCapture(event.pointerId)
     draggingButton.value = null
     isDragging.value = false
+    isHoveringButton.value = false
     emit('update', props.buttons.map(b => ({ ...b })))
   }
+}
+
+const onPointerLeave = () => {
+  isHoveringButton.value = false
 }
 
 const emitUpdate = () => {
@@ -381,6 +390,7 @@ onMounted(() => {
     canvas.value.addEventListener('pointermove', onPointerMove)
     canvas.value.addEventListener('pointerup', onPointerUp)
     canvas.value.addEventListener('pointercancel', onPointerUp)
+    canvas.value.addEventListener('pointerleave', onPointerLeave)
     canvas.value.addEventListener('click', onCanvasClick)
   }
 })
@@ -392,6 +402,7 @@ onUnmounted(() => {
     canvas.value.removeEventListener('pointermove', onPointerMove)
     canvas.value.removeEventListener('pointerup', onPointerUp)
     canvas.value.removeEventListener('pointercancel', onPointerUp)
+    canvas.value.removeEventListener('pointerleave', onPointerLeave)
     canvas.value.removeEventListener('click', onCanvasClick)
   }
 })
