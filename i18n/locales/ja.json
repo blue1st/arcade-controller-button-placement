@@ -55,5 +55,26 @@
     "connectToken": "接続設定",
     "tokenConnected": "接続済み",
     "registeredToolsCount": "{count} 個のツールが公開中"
+  },
+  "geminiBridge": {
+    "buttonText": "Gemini AI 連携",
+    "modalTitle": "Gemini in Chrome AI 連携",
+    "description": "Gemini in Chrome（サイドパネルや右クリック）に指示を出し、出力されたJSONを反映できます。このページ内のデータと指示書は自動的にGeminiが読み取れるようDOMに仕込まれています。",
+    "step1Title": "ステップ 1: Gemini に指示する",
+    "step1Desc": "ChromeのGeminiサイドパネルを開いて「このページのボタンをスト6向けに調整して」と話しかけるか、下のプロンプトをコピーしてご利用ください。",
+    "copyPrompt": "現在のプロンプトをコピー",
+    "promptCopied": "プロンプトをクリップボードにコピーしました！",
+    "step2Title": "ステップ 2: 回答JSONを貼り付けて反映",
+    "inputPlaceholder": "Geminiの回答テキストまたはJSONをここに貼り付けてください（Cmd+V / Ctrl+V または「クリップボードから読み込む」）",
+    "readClipboard": "クリップボードから読み込む",
+    "apply": "レイアウトに反映する",
+    "preview": "解析結果プレビュー",
+    "buttonsDetected": "{count} 個のボタン設定を検出しました",
+    "invalidJson": "有効なボタン配置データが見つかりませんでした。JSONフォーマットを確認してください。",
+    "applySuccess": "ボタン配置を反映しました！",
+    "quickPrompts": "指示サンプル:",
+    "quickPrompt1": "ストリートファイター6向け（親指パリィ/インパクト用ボタン追加）に調整して",
+    "quickPrompt2": "手の長さに合わせて、ボタンをより自然な円弧状（エルゴノミクスカーブ）にして",
+    "quickPrompt3": "全体を右に30px、下に20px移動して"
   }
 }

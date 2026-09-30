@@ -55,5 +55,26 @@
     "connectToken": "Connect",
     "tokenConnected": "Connected",
     "registeredToolsCount": "{count} Tools Active"
+  },
+  "geminiBridge": {
+    "buttonText": "Gemini AI Bridge",
+    "modalTitle": "Gemini in Chrome AI Bridge",
+    "description": "Send requests to Gemini in Chrome (Side Panel or context menu) and apply the returned JSON. Page layout data and instructions are pre-injected into the DOM for Gemini to read automatically.",
+    "step1Title": "Step 1: Ask Gemini in Chrome",
+    "step1Desc": "Open Gemini Side Panel in Chrome and say 'Adjust buttons on this page for Street Fighter 6', or copy the prompt below.",
+    "copyPrompt": "Copy Prompt",
+    "promptCopied": "Prompt copied to clipboard!",
+    "step2Title": "Step 2: Paste JSON to Apply",
+    "inputPlaceholder": "Paste Gemini output text or JSON here (Cmd+V / Ctrl+V, or click 'Read from Clipboard')",
+    "readClipboard": "Read from Clipboard",
+    "apply": "Apply to Canvas",
+    "preview": "Parsed Preview",
+    "buttonsDetected": "{count} button configurations detected",
+    "invalidJson": "No valid button configuration found. Please check the JSON format.",
+    "applySuccess": "Button layout updated successfully!",
+    "quickPrompts": "Sample Prompts:",
+    "quickPrompt1": "Optimize layout for Street Fighter 6 (add thumb parry/impact buttons)",
+    "quickPrompt2": "Curve buttons into an ergonomic arc matching natural finger lengths",
+    "quickPrompt3": "Shift all buttons 30px right and 20px down"
   }
 }
